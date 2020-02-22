@@ -1,0 +1,11 @@
+[Unit]
+Description=springpetclinic
+After=syslog.target
+
+[Service]
+User=jenkins
+ExecStart=/usr/bin/java -jar /home/jenkins/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
+
+[Install]
+WantedBy=multi-user.target
+

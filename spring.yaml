@@ -1,0 +1,22 @@
+-  hosts: all
+   become: yes
+   tasks:
+     -  name: install java
+        package:
+          name: openjdk-8-jdk
+          state: present
+     -  name: copy file from acs to node
+        copy:
+          src: spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
+          dest: /home/jenkins/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
+     -  name: copy spring.service
+        copy:
+          src: spring.service
+          dest: /etc/systemd/system/spring.service
+     -  name: start service
+        service:
+          name: spring
+          state: started
+          
+              
+  
